@@ -5,7 +5,6 @@ import java.util.*;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "empleado")
 public class Empleado {
@@ -14,16 +13,17 @@ public class Empleado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "empleado_id")
     private Integer empleadoId;
-    
+
     private String nombre;
     private Integer edad;
 
-    @ManyToOne
+    @ManyToOne //JoinColumn va donde está la FK
     @JoinColumn(name = "categoria_id", referencedColumnName = "categoria_id")
     private Categoria categoria;
+    
     private BigDecimal sueldo;
 
-    @Column(name = "estado_id") 
+    @Column(name = "estado_id")
     private int estado;
 
     @Column(name = "fecha_alta")
@@ -31,7 +31,7 @@ public class Empleado {
 
     @Column(name = "fecha_baja")
     private Date fechaBaja;
-   
+
     public Integer getEmpleadoId() {
         return empleadoId;
     }
@@ -40,12 +40,10 @@ public class Empleado {
         this.empleadoId = empleadoId;
     }
 
-
     public String getNombre() {
         return nombre;
     }
 
-    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -80,7 +78,7 @@ public class Empleado {
     }
 
     public void setEstado(EstadoEmpleadoEnum estado) {
-        this.estado= estado.getValue();
+        this.estado = estado.getValue();
     }
 
     public Date getFechaAlta() {
@@ -101,8 +99,7 @@ public class Empleado {
 
     public enum EstadoEmpleadoEnum {
 
-        ACTIVO(1), 
-        BAJA(2);
+        ACTIVO(1), BAJA(2);
 
         private final int value;
 
@@ -115,7 +112,7 @@ public class Empleado {
         }
 
         public static EstadoEmpleadoEnum parse(int id) {
-            EstadoEmpleadoEnum status = null;
+            EstadoEmpleadoEnum status = null; //Default
             for (EstadoEmpleadoEnum item : EstadoEmpleadoEnum.values()) {
                 if (item.getValue() == id) {
                     status = item;

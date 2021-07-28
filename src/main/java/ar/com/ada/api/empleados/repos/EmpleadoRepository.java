@@ -6,11 +6,6 @@ import org.springframework.stereotype.Repository;
 import ar.com.ada.api.empleados.entities.Empleado;
 
 @Repository
-public interface EmpleadoRepository extends JpaRepository<Empleado, Integer> { 
-    Empleado findByEmpleadoId(Integer empleadoId);
+public interface EmpleadoRepository extends JpaRepository<Empleado, Integer> {
 
-	
-
-    
-    
 }

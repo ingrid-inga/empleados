@@ -5,5 +5,5 @@ import java.math.BigDecimal;
 public class SueldoActualizado {
 
     public BigDecimal sueldoNuevo;
-    
+
 }

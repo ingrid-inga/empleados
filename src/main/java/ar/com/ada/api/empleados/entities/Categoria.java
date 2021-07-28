@@ -15,7 +15,6 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "categoria_id")
-
     private Integer categoriaId;
 
     private String nombre;
@@ -25,12 +24,12 @@ public class Categoria {
 
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
-
     private List<Empleado>empleados = new ArrayList<>();
 
     public List<Empleado> getEmpleados() {
         return empleados;
     }
+
     public void setEmpleados(List<Empleado> empleados) {
         this.empleados = empleados;
     }
