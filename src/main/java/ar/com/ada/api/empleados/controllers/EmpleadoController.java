@@ -89,7 +89,7 @@ public class EmpleadoController {
     @PutMapping("/empleados/{id}/sueldos")
     public ResponseEntity<GenericResponse> actualizarSueldo(@PathVariable Integer id,
             @RequestBody SueldoActualizado sueldoNuevoInfo) {
-        GenericResponse respuesta = new GenericResponse();
+       
         // 1.-busca el empleado
         Empleado empleado = service.buscarEmpleado(id);
         // 2.-setear el sueldo nuevo
@@ -97,8 +97,10 @@ public class EmpleadoController {
         // 3.-se guarda en la base de datos
         service.guardar(empleado);
 
+        GenericResponse respuesta = new GenericResponse();
+
         respuesta.isOk = true;
-        respuesta.message = "Sueldo actualizado con éxito"; // + empleado.getEmpleadoId();
+        respuesta.message = "Sueldo actualizado con éxito"; //+ empleado.getEmpleadoId();
         return ResponseEntity.ok(respuesta);
 
     }
