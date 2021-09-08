@@ -1,7 +1,9 @@
 package ar.com.ada.api.empleados.services;
 
 import java.util.*;
+import java.util.Optional;
 
+import org.hibernate.sql.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,16 @@ public class CategoriaService {
         if (resultado.isPresent())
             categoria = resultado.get();
         return categoria;
+    }
+
+    public Categoria findCategoria(String categoriaNombre){
+        return repo.findByNombre(categoriaNombre);
+    }
+
+    //buscar una categoria por id y eliminarla
+
+    public void eliminarCategoria(Integer categoriaId){
+        repo.deleteById(categoriaId);
     }
 
 }
